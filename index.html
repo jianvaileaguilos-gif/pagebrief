@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Pagebrief | Free website speed check in plain English</title>
+    <meta name="description" content="Paste your website address and get a free, plain-English report on speed, mobile, search and accessibility in about 30 seconds." />
+    <meta name="author" content="Jian Vaile Aguilos (JVA)" />
+    <meta name="theme-color" content="#eef0f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script>
+      try {
+        const t = localStorage.getItem('pagebrief-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="nav-wrap">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top" aria-label="Pagebrief home">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="10" y="24" width="9" height="34" rx="2" fill="currentColor" />
+            <circle cx="34" cy="28" r="15" stroke="currentColor" stroke-width="9" fill="none" />
+            <path d="M34 28 43.5 18.5" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" />
+            <circle cx="34" cy="28" r="3.6" fill="var(--accent)" />
+          </svg>
+          <span>pagebrief</span>
+        </a>
+        <div class="nav-links">
+          <a href="#checks">What we check</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">Questions</a>
+        </div>
+        <div class="nav-actions">
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch colour theme">
+            <i class="ph-light ph-moon" aria-hidden="true"></i>
+          </button>
+          <a class="btn btn-dark btn-sm nav-cta" href="#top" data-focus-url>Check my site</a>
+          <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="burger" aria-hidden="true"><span></span><span></span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <div class="mobile-menu-inner">
+        <a href="#checks">What we check</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">Questions</a>
+        <a href="#top" data-focus-url>Check my site</a>
+      </div>
+    </div>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Is your website turning customers away?</h1>
+          <p class="hero-sub">Paste your website address. In about 30 seconds you get a free, plain-English report on speed, mobile, search and accessibility.</p>
+
+          <form class="url-form" id="url-form" novalidate>
+            <label for="url-input" class="sr-only">Your website address</label>
+            <div class="url-shell">
+              <div class="url-core">
+                <i class="ph-light ph-globe-simple" aria-hidden="true"></i>
+                <input id="url-input" name="url" type="text" inputmode="url" autocomplete="url" spellcheck="false" autocapitalize="off" placeholder="yourshop.com" aria-describedby="url-error" />
+                <button class="btn btn-accent" type="submit" id="check-btn">
+                  <span class="btn-label">Check my site</span>
+                  <span class="btn-icon"><i class="ph-light ph-arrow-right" aria-hidden="true"></i></span>
+                </button>
+              </div>
+            </div>
+            <p class="url-error" id="url-error" role="alert"></p>
+          </form>
+          <button class="text-link" type="button" id="sample-btn">Or see a sample report first</button>
+        </div>
+
+        <div class="hero-visual">
+          <div class="bezel hero-photo">
+            <div class="bezel-core">
+              <img src="/images/owner-tablet.jpg" alt="A shop owner checking her tablet between clothing rails" width="1600" height="900" fetchpriority="high" />
+            </div>
+          </div>
+          <div class="bezel hero-chip" aria-hidden="true">
+            <div class="bezel-core" id="hero-chip"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Report (filled in by JS) -->
+      <section class="report-section" id="report" aria-live="polite" hidden>
+        <div class="report-inner" id="report-body"></div>
+      </section>
+
+      <!-- What we check -->
+      <section class="checks" id="checks" aria-labelledby="checks-title">
+        <div class="checks-grid">
+          <div class="checks-index">
+            <h2 id="checks-title">Four things every customer notices, even if they never say it.</h2>
+            <ol class="index-list" id="index-list">
+              <li><a href="#check-speed" data-index="speed"><span>Speed</span></a></li>
+              <li><a href="#check-mobile" data-index="mobile"><span>Mobile</span></a></li>
+              <li><a href="#check-search" data-index="search"><span>Search</span></a></li>
+              <li><a href="#check-access" data-index="access"><span>Accessibility</span></a></li>
+            </ol>
+          </div>
+
+          <div class="checks-panels">
+            <article class="panel reveal" id="check-speed" data-panel="speed">
+              <div class="bezel">
+                <div class="bezel-core panel-visual panel-film" id="panel-film"></div>
+              </div>
+              <h3>How long people wait</h3>
+              <p>We load your site on a mid-range phone over a mobile connection and time each moment: when something first appears, when the main content shows, and how long the screen stays frozen.</p>
+              <p class="stat"><strong>53%</strong> of mobile visits are abandoned if a page takes longer than 3 seconds to load. <a href="https://www.thinkwithgoogle.com/marketing-strategies/app-and-mobile/mobile-page-speed-new-industry-benchmarks/" target="_blank" rel="noopener">Google research</a></p>
+            </article>
+
+            <article class="panel reveal" id="check-mobile" data-panel="mobile">
+              <div class="bezel">
+                <div class="bezel-core panel-visual">
+                  <img src="/images/phone-typing.jpg" alt="Close-up of hands typing on a smartphone" loading="lazy" width="1600" height="1067" />
+                </div>
+              </div>
+              <h3>Whether it works on a phone</h3>
+              <p>Is the page set up for small screens? Are buttons big enough to tap? Does the layout jump while it loads? Are photos sharp on phone displays?</p>
+              <p class="stat">Google ranks sites based on <strong>their mobile version</strong>, even for people searching on a computer. <a href="https://developers.google.com/search/docs/crawling-indexing/mobile/mobile-sites-mobile-first-indexing" target="_blank" rel="noopener">Google Search Central</a></p>
+            </article>
+
+            <article class="panel reveal" id="check-search" data-panel="search">
+              <div class="bezel">
+                <div class="bezel-core panel-visual panel-serp">
+                  <div class="serp" aria-label="Example of how a page appears in Google results">
+                    <div class="serp-site">
+                      <span class="serp-fav"><img src="/favicon-32.png" alt="" width="18" height="18" /></span>
+                      <span><strong>Halde GT</strong><small>jianvaileaguilos-gif.github.io › halde-configurator</small></span>
+                    </div>
+                    <p class="serp-title">Halde GT | Build yours</p>
+                    <p class="serp-desc">Configure the Halde GT electric grand tourer in real-time 3D. Choose paint, wheels, calipers and cabin.</p>
+                  </div>
+                  <p class="serp-note">Your title and description are the first thing people read in Google, before they ever see your site.</p>
+                </div>
+              </div>
+              <h3>How Google reads it</h3>
+              <p>We check the basics search engines rely on: a clear page title and description, links Google can follow, and nothing telling search engines to stay away.</p>
+            </article>
+
+            <article class="panel reveal" id="check-access" data-panel="access">
+              <div class="bezel">
+                <div class="bezel-core panel-visual">
+                  <img src="/images/laptop-garden.jpg" alt="An older woman on the phone while using her laptop at a garden table" loading="lazy" width="1600" height="1065" />
+                </div>
+              </div>
+              <h3>Whether everyone can use it</h3>
+              <p>Can people with poor eyesight read your text? Do photos have descriptions for blind visitors? Do forms work with a keyboard? This is also how you avoid shutting out older customers.</p>
+              <p class="stat"><strong>1 in 6 people</strong> worldwide lives with a significant disability. <a href="https://www.who.int/news-room/fact-sheets/detail/disability-and-health" target="_blank" rel="noopener">World Health Organization</a></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statement -->
+      <section class="statement" aria-label="Why it matters">
+        <p class="statement-text reveal">Nobody emails you to say your website is slow. <span>They just go to the next result.</span></p>
+      </section>
+
+      <!-- How it works -->
+      <section class="how" id="how" aria-labelledby="how-title">
+        <h2 id="how-title" class="reveal">From a web address to a fix list in one sitting.</h2>
+        <ol class="flow">
+          <li class="reveal">
+            <span class="flow-verb">Paste</span>
+            <p>Type your website address. No sign-up, no email needed to see the results.</p>
+          </li>
+          <li class="reveal">
+            <span class="flow-verb">Read</span>
+            <p>Get a report in everyday words, with the problems ranked by how much they cost you.</p>
+          </li>
+          <li class="reveal">
+            <span class="flow-verb">Fix</span>
+            <p>Sort the quick wins yourself, or send the report to us and get a free plan for the rest.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- FAQ -->
+      <section class="faq" id="faq" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="reveal">Questions people ask</h2>
+        <div class="faq-list">
+          <details class="reveal">
+            <summary>Is it really free?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <p>Yes. The check and the report are free with no sign-up. If you want help fixing things, you can ask for a free plan and a quote, and you decide from there.</p>
+          </details>
+          <details class="reveal">
+            <summary>Where do the results come from?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <p>From Google’s own testing tool, Lighthouse, run through Google PageSpeed Insights. We translate its technical output into plain language and rank the problems for you.</p>
+          </details>
+          <details class="reveal">
+            <summary>Why does my score change each time I check?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <p>Each check loads your site fresh, and small things vary: how busy your server is, ads, and network conditions. Scores moving by a few points is normal. Big problems show up every time.</p>
+          </details>
+          <details class="reveal">
+            <summary>Do you store my website or my results?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <p>No. The check runs in your browser and nothing is saved on our side. Your address is only sent to us if you ask for a fix plan.</p>
+          </details>
+          <details class="reveal">
+            <summary>My site was built with Wix, Squarespace or WordPress. Can it still be fixed?<i class="ph-light ph-plus" aria-hidden="true"></i></summary>
+            <p>Usually, yes. Many fixes, like resizing images or writing page descriptions, can be done in your site editor. The report marks which ones you can do yourself.</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="closing" aria-labelledby="closing-title">
+        <div class="bezel closing-shell">
+          <div class="bezel-core closing-core">
+            <div class="closing-photo">
+              <img src="/images/open-sign.jpg" alt="A café owner smiling outside her shop holding a sign that reads Yes we're open" loading="lazy" width="1600" height="900" />
+            </div>
+            <div class="closing-copy">
+              <h2 id="closing-title">Your shop is open. Is your website?</h2>
+              <p>Find out what your visitors see before they decide to stay or leave.</p>
+              <a class="btn btn-dark" href="#top" data-focus-url>
+                <span class="btn-label">Check my site</span>
+                <span class="btn-icon"><i class="ph-light ph-arrow-up-right" aria-hidden="true"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="brand" href="#top" aria-label="Back to top">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="10" y="24" width="9" height="34" rx="2" fill="currentColor" />
+            <circle cx="34" cy="28" r="15" stroke="currentColor" stroke-width="9" fill="none" />
+            <path d="M34 28 43.5 18.5" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" />
+            <circle cx="34" cy="28" r="3.6" fill="var(--accent)" />
+          </svg>
+          <span>pagebrief</span>
+        </a>
+        <p class="footer-note">Results come from Google PageSpeed Insights (Lighthouse). Pagebrief is not affiliated with Google. Photography from <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>.</p>
+        <a class="jva-stamp" href="https://jianaguilos.vercel.app" target="_blank" rel="noopener" aria-label="A JVA project by Jian Vaile Aguilos. Opens portfolio in a new tab">
+          <span class="jva-label">A</span>
+          <span class="jva-mark">JVA</span>
+          <span class="jva-label">project</span>
+          <span class="jva-arrow"><i class="ph-light ph-arrow-up-right" aria-hidden="true"></i></span>
+        </a>
+      </div>
+      <div class="footer-base">
+        <p>© 2026 JVA. Designed and built by Jian Vaile Aguilos.</p>
+        <a href="https://github.com/jianvaileaguilos-gif/pagebrief" target="_blank" rel="noopener">Source on GitHub</a>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
