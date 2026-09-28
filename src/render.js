@@ -136,7 +136,7 @@ export function renderReport(r, { strategy, canSwitch }) {
         ${leadForm(r)}
       </div>
 
-      <p class="print-credit">Report by Pagebrief, a JVA project. Run your own free check at pagebrief-iota.vercel.app. Need these fixed? jianaguilos@gmail.com</p>
+      <p class="print-credit">Report by Pagebrief, a JVA project. Run your own free check at pagebrief-iota.vercel.app. Need these fixed? jianvaileaguilos@gmail.com</p>
     </div>`;
 }
 
