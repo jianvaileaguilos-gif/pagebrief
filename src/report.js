@@ -575,6 +575,8 @@ function summarise(scores, metrics, issues) {
   if (!weak.length && !middling.length) headline = 'Your site is in great shape.';
   else if (weak.includes('speed')) headline = 'Your site is slow, and that is costing you visitors.';
   else if (weak.length) headline = `Your site has a problem with ${names[weak[0]]}.`;
+  // Google counts anything over 4 s for the main content as poor
+  else if (lcp && lcp.raw > 4000) headline = 'Your site is well built, but visitors wait too long to see it.';
   else headline = 'Your site is solid, with a few things worth fixing.';
 
   const parts = [];

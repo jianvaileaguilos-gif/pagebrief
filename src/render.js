@@ -72,7 +72,7 @@ export function renderReport(r, { strategy, canSwitch }) {
         <div class="report-id">
           ${r.source === 'sample' ? '<p class="sample-flag">Sample report</p>' : ''}
           <h2 class="report-host ${r.host.length > 26 ? 'is-long' : ''}">${esc(r.host)}</h2>
-          <p class="report-meta">Checked ${checkedOn} on ${device}${r.source === 'sample' ? ', using our own Halde demo site' : ''}</p>
+          <p class="report-meta">Checked ${checkedOn} on ${device}${r.source === 'sample' ? '. Paste your own address above to check your site.' : ''}</p>
         </div>
         <div class="report-tools">
           ${
@@ -173,7 +173,7 @@ function timeline(r) {
   const edge = (p) => (p < 12 ? 'at-start' : p > 88 ? 'at-end' : '');
   const marker = (m, cls, label) =>
     m
-      ? `<span class="tl-marker ${cls} ${edge(pos(m.raw))}" style="--x:${pos(m.raw)}%"><span>${label} <strong>${esc(m.value)}</strong>${m.raw > end ? ' and later' : ''}</span></span>`
+      ? `<span class="tl-marker ${cls} ${edge(pos(m.raw))}" style="--x:${pos(m.raw)}%"><span>${label} <strong>${esc(m.value)}</strong>${m.raw > end ? ' →' : ''}</span></span>`
       : '';
   const targetInside = 2500 <= end;
 
@@ -320,7 +320,7 @@ function leadForm(r) {
 // Small preview for the hero, built from the sample report
 export function renderHeroChip(r) {
   return `
-    <p class="chip-head"><span>Halde GT demo, on a phone</span><span>Sample</span></p>
+    <p class="chip-head"><span>${esc(r.host)}, on a phone</span><span>Sample</span></p>
     <ul class="chip-scores">
       ${Object.keys(CATEGORIES)
         .map((k) => {
@@ -341,5 +341,5 @@ export function renderPanelFilm(r) {
     <ol class="mini-film">
       ${frames.map((f) => `<li><img src="${f.src}" alt="" loading="lazy" /><span>${formatMs(f.t)}</span></li>`).join('')}
     </ol>
-    <p class="mini-film-note">A real load of our demo site on a phone. The main content took ${esc(r.metrics.find((m) => m.id === 'largest-contentful-paint')?.value || '')} to appear.</p>`;
+    <p class="mini-film-note">A real load of ${esc(r.host)} on a phone. The main content took ${esc(r.metrics.find((m) => m.id === 'largest-contentful-paint')?.value || '')} to appear.</p>`;
 }

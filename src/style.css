@@ -1094,7 +1094,7 @@ input {
 }
 .tl-marker.at-end > span,
 .tl-target.at-end > span {
-  transform: translateX(calc(-100% + 6px));
+  transform: translateX(-100%);
 }
 
 /* Metrics */

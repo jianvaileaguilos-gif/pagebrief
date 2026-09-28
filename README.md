@@ -48,7 +48,7 @@ Without a key, checks use Google's shared public quota. It is often used up, in 
 - `src/report.js` turns the result into plain language: scores, a one-line verdict, timings against Google's targets, and issues ranked by likely cost, each marked "You can usually fix this" or "Needs a developer". It has no browser code, so it also runs in Node.
 - `src/render.js` draws the report: score rings, a real loading filmstrip on a time axis, the final screenshot in a device frame, the fix list, and the lead form.
 - The **Mobile** score is Pagebrief's own: a weighted mix of four phone checks from Lighthouse (viewport, tap target size, layout shift, image sharpness).
-- The sample report is a real Lighthouse run on our Halde demo site, stored slimmed in `public/sample/`.
+- The sample report is a real Lighthouse run on fufld.com, stored slimmed in `public/sample/`.
 
 Other features: phone and computer views, "Save as PDF" (print layout), shareable links (`?url=...`), light and dark themes, reduced-motion support, and full keyboard access.
 
