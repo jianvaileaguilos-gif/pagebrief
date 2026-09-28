@@ -431,6 +431,17 @@ const panelIO = new IntersectionObserver(
 $$('[data-panel]').forEach((p) => panelIO.observe(p));
 
 // ---------- Deep links ----------
+// A shared link (?url=...) runs the check when first opened. Reloading the
+// page starts over instead: empty input, no report, back at the top.
+const navType = performance.getEntriesByType('navigation')[0]?.type;
+if (navType === 'reload') {
+  history.scrollRestoration = 'manual';
+  if (location.search) history.replaceState(null, '', location.pathname);
+  urlForm.reset();
+  urlInput.value = '';
+  window.scrollTo(0, 0);
+}
+
 const params = new URLSearchParams(location.search);
 if (params.get('url')) {
   urlInput.value = params.get('url');
